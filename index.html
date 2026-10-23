@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CHAPCHAP-CI - Super-App</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;800;900&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Inter',sans-serif}
+.hidden{display:none}
+.active-nav{color:#FF6B00 !important; font-weight:900}
+</style>
+</head>
+<body class="bg-[#F5F5F5]">
+<div class="max-w-[400px] mx-auto min-h-screen bg-white pb-[90px] shadow-2xl relative">
+
+<!-- ============ PAGE ACCUEIL ============ -->
+<div id="page-accueil">
+<header class="flex justify-between items-center px-5 pt-12 pb-3 bg-white">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-[#FF6B00] rounded-full flex items-center justify-center text-white font-black">C</div>
+<span class="font-black text-[#FF6B00] text-[22px]">CHAPCHAP-CI</span>
+</div>
+<div class="flex gap-3 text-gray-600">🔔 👤</div>
+</header>
+<div class="px-5">
+<h1 class="text-[28px] font-black leading-tight">Bonjour Aicha</h1>
+<p class="text-gray-600 text-[15px]">Que souhaitez-vous aujourd'hui ?</p>
+<div class="mt-4 bg-[#F3F3F3] rounded-xl flex items-center px-4 py-3.5">
+<span class="mr-2">🔍</span>
+<input placeholder="Rechercher..." class="bg-transparent w-full outline-none text-sm font-semibold"/>
+</div>
+<div class="mt-5 bg-[#FF6B00] rounded-[14px] p-4 flex justify-between items-center">
+<div class="flex gap-3 items-center">
+<div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">🎁</div>
+<div><p class="font-black text-white text-[13px]">Parrainage : 2000 FCFA</p><p class="text-white/90 text-[10px]">Invitez vos amis</p></div>
+</div>
+<span class="text-white">→</span>
+</div>
+
+<h2 class="font-black text-[18px] mt-6 mb-3">Services</h2>
+<div class="grid grid-cols-2 gap-3">
+<button onclick="showPage('pharmacie')" class="text-left bg-white border border-gray-100 rounded-[14px] p-3.5 shadow-sm hover:shadow-md transition"><div class="flex gap-2 items-center"><div class="w-10 h-10 bg-[#FF6B00] rounded-full flex items-center justify-center text-white">✚</div><div><p class="font-bold text-[12px]">Pharmacie Garde</p><p class="text-[10px] text-gray-500">24h/24 - 7j/7</p></div></div></button>
+<button onclick="showPage('taxi')" class="text-left bg-white border border-gray-100 rounded-[14px] p-3.5 shadow-sm hover:shadow-md"><div class="flex gap-2 items-center"><div class="w-10 h-10 bg-[#FF6B00] rounded-full flex items-center justify-center text-white">🏍️</div><div><p class="font-bold text-[12px]">Taxi/Moto</p><p class="text-[10px] text-gray-500">Course immédiate</p></div></div></button>
+<button onclick="showPage('artisan')" class="text-left bg-white border border-gray-100 rounded-[14px] p-3.5 shadow-sm"><div class="flex gap-2 items-center"><div class="w-10 h-10 bg-[#FF6B00] rounded-full flex items-center justify-center text-white">🔧</div><div><p class="font-bold text-[12px]">Artisan SOS</p><p class="text-[10px] text-gray-500">Plombier, Électricien</p></div></div></button>
+<button onclick="showPage('resto')" class="text-left bg-white border border-gray-100 rounded-[14px] p-3.5 shadow-sm"><div class="flex gap-2 items-center"><div class="w-10 h-10 bg-[#FF6B00] rounded-full flex items-center justify-center text-white">🍛</div><div><p class="font-bold text-[12px]">Restaurant Maquis</p><p class="text-[10px] text-gray-500">Plats locaux</p></div></div></button>
+<button onclick="showPage('bagage')" class="text-left bg-white border border-gray-100 rounded-[14px] p-3.5 shadow-sm"><div class="flex gap-2 items-center"><div class="w-10 h-10 bg-[#FF6B00] rounded-full flex items-center justify-center text-white">📦</div><div><p class="font-bold text-[12px]">Bagage</p><p class="text-[10px] text-gray-500">Déménagement</p></div></div></button>
+<button onclick="showPage('assurance')" class="text-left bg-white border border-gray-100 rounded-[14px] p-3.5 shadow-sm"><div class="flex gap-2 items-center"><div class="w-10 h-10 bg-[#FF6B00] rounded-full flex items-center justify-center text-white">🛡️</div><div><p class="font-bold text-[12px]">Assurance</p><p class="text-[10px] text-gray-500">Devis instantané</p></div></div></button>
+</div>
+
+<h2 class="font-black mt-6 mb-3">Mon portefeuille</h2>
+<div class="bg-[#FF6B00] rounded-[14px] p-4 flex gap-3 items-center"><span class="text-2xl">💳</span><div><p class="font-black text-white">15 000 FCFA</p><p class="text-white/80 text-xs">Wave • MTN • Orange Money</p></div></div>
+<div class="mt-3 bg-black rounded-[14px] p-4 flex gap-3 items-center"><span class="text-2xl">💰</span><div><p class="font-black text-white">12 500 FCFA</p><p class="text-white/60 text-xs">Gains chauffeur • Retirer</p></div></div>
+</div>
+</div>
+
+<!-- ============ PAGE TAXI ============ -->
+<div id="page-taxi" class="hidden">
+<header class="flex items-center px-5 pt-12 pb-4 bg-white border-b">
+<button onclick="showPage('accueil')" class="text-xl mr-4">←</button>
+<h1 class="font-black text-xl">Taxi/Moto</h1>
+</header>
+<div class="h-48 bg-gray-200 relative flex items-center justify-center"><p class="text-gray-400">🗺️ Carte Abidjan - Cocody → Plateau</p><div class="absolute bottom-3 left-5 right-5 bg-white rounded-xl p-3 shadow-lg"><div class="flex items-center gap-2 border-b pb-2 mb-2"><span class="text-[#FF6B00]">📍</span><p class="text-sm font-bold">De Abidjan Cocody</p></div><div class="flex items-center gap-2"><span class="text-[#FF6B00]">🏁</span><p class="text-sm font-bold">À Plateau</p></div></div></div>
+<div class="px-5 mt-4">
+<h2 class="font-black mb-3">Choisir un véhicule</h2>
+<div class="space-y-3">
+<div class="bg-[#FF6B00]/10 border-2 border-[#FF6B00] rounded-xl p-4 flex justify-between items-center"><div class="flex gap-3 items-center"><div class="w-10 h-10 bg-[#FF6B00] rounded-full flex items-center justify-center text-white">🏍️</div><div><p class="font-bold">Moto</p><p class="text-xs text-gray-500">Arrivée en 5-8 min</p></div></div><p class="font-black">500 FCFA ✓</p></div>
+<div class="bg-white border rounded-xl p-4 flex justify-between items-center"><div class="flex gap-3 items-center"><div class="w-10 h-10 bg-[#FF6B00] rounded-full flex items-center justify-center text-white">🚕</div><div><p class="font-bold">Taxi</p><p class="text-xs text-gray-500">8-12 min</p></div></div><p class="font-black">1500 FCFA</p></div>
+<div class="bg-white border rounded-xl p-4 flex justify-between items-center"><div class="flex gap-3 items-center"><div class="w-10 h-10 bg-[#FF6B00] rounded-full flex items-center justify-center text-white">🚗</div><div><p class="font-bold">Confort</p><p class="text-xs text-gray-500">Premium 10-15 min</p></div></div><p class="font-black">3000 FCFA</p></div>
+</div>
+<div class="mt-4 bg-gray-50 rounded-xl p-3 flex gap-3 items-center"><img src="https://i.pravatar.cc/100?img=12" class="w-12 h-12 rounded-full"/><div><p class="text-xs text-gray-500">Chauffeur disponible</p><p class="font-black">Ibrahim K. ⭐ 4.9 (127 courses)</p></div></div>
+<button class="w-full mt-5 bg-[#FF6B00] text-white font-black py-4 rounded-xl">Commander maintenant - 1500 FCFA</button>
+</div>
+</div>
+
+<!-- ============ PAGE PHARMACIE ============ -->
+<div id="page-pharmacie" class="hidden">
+<header class="flex items-center px-5 pt-12 pb-4 bg-white border-b">
+<button onclick="showPage('accueil')" class="text-xl mr-4">←</button>
+<h1 class="font-black text-xl">Pharmacie de Garde</h1>
+</header>
+<div class="px-5 mt-4 space-y-3">
+<div class="bg-green-50 border border-green-200 rounded-xl p-4"><div class="flex justify-between"><p class="font-black">Pharmacie des Lagunes</p><span class="bg-green-500 text-white text-[10px] px-2 py-1 rounded-full">OUVERTE</span></div><p class="text-xs text-gray-600 mt-1">Cocody, Rue des Jardins - 1.2km</p><p class="text-xs font-bold text-[#FF6B00] mt-2">● Ouverte 24h/24 • Appeler : 07 01 02 03 04</p></div>
+<div class="bg-green-50 border border-green-200 rounded-xl p-4"><div class="flex justify-between"><p class="font-black">Pharmacie du Plateau</p><span class="bg-green-500 text-white text-[10px] px-2 py-1 rounded-full">OUVERTE</span></div><p class="text-xs text-gray-600 mt-1">Plateau, Avenue Nogues - 2.5km</p><p class="text-xs font-bold text-[#FF6B00] mt-2">● 07 08 09 10 11</p></div>
+<div class="bg-white border rounded-xl p-4 opacity-60"><div class="flex justify-between"><p class="font-black">Pharmacie Centrale</p><span class="bg-gray-400 text-white text-[10px] px-2 py-1 rounded-full">FERMÉE</span></div><p class="text-xs text-gray-600 mt-1">Adjamé - 3km - Ouvre à 8h</p></div>
+<button class="w-full mt-6 bg-black text-white font-black py-4 rounded-xl">📞 Urgence 24h/7 : 07 00 00 00 00</button>
+</div>
+</div>
+
+<!-- ============ PAGE ARTISAN ============ -->
+<div id="page-artisan" class="hidden">
+<header class="flex items-center px-5 pt-12 pb-4 bg-white border-b">
+<button onclick="showPage('accueil')" class="text-xl mr-4">←</button>
+<h1 class="font-black text-xl">Artisan SOS</h1>
+</header>
+<div class="px-5 mt-4 grid grid-cols-2 gap-3">
+<div class="bg-white border rounded-xl p-4 text-center"><p class="text-2xl">🔧</p><p class="font-black text-sm mt-2">Plombier</p><p class="text-[10px] text-gray-500">Dès 5000 FCFA</p></div>
+<div class="bg-white border rounded-xl p-4 text-center"><p class="text-2xl">⚡</p><p class="font-black text-sm mt-2">Électricien</p><p class="text-[10px] text-gray-500">Dès 4000 FCFA</p></div>
+<div class="bg-white border rounded-xl p-4 text-center"><p class="text-2xl">❄️</p><p class="font-black text-sm mt-2">Climaticien</p><p class="text-[10px] text-gray-500">Dès 7000 FCFA</p></div>
+<div class="bg-white border rounded-xl p-4 text-center"><p class="text-2xl">🪚</p><p class="font-black text-sm mt-2">Menuisier</p><p class="text-[10px] text-gray-500">Dès 6000 FCFA</p></div>
+</div>
+<div class="px-5 mt-6"><button class="w-full bg-[#FF6B00] text-white font-black py-4 rounded-xl">Demander un artisan en 15 min</button></div>
+</div>
+
+<!-- ============ PAGE RESTO ============ -->
+<div id="page-resto" class="hidden">
+<header class="flex items-center px-5 pt-12 pb-4 bg-white border-b">
+<button onclick="showPage('accueil')" class="text-xl mr-4">←</button>
+<h1 class="font-black text-xl">Restaurant Maquis</h1>
+</header>
+<div class="px-5 mt-4 space-y-3">
+<div class="bg-white border rounded-xl p-3 flex gap-3"><div class="w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center text-2xl">🍛</div><div><p class="font-black text-sm">Attiéké Poisson - Chez Aicha</p><p class="text-xs text-gray-500">⭐ 4.8 • 20-30 min • Livraison 500F</p><p class="font-black text-[#FF6B00] text-sm">2500 FCFA</p></div></div>
+<div class="bg-white border rounded-xl p-3 flex gap-3"><div class="w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center text-2xl">🍗</div><div><p class="font-black text-sm">Alloco Poulet - Maquis 225</p><p class="text-xs text-gray-500">⭐ 4.9 • 15-25 min</p><p class="font-black text-[#FF6B00] text-sm">3000 FCFA</p></div></div>
+</div>
+</div>
+
+<!-- ============ PAGE BAGAGE + ASSURANCE SIMILAIRE ============ -->
+<div id="page-bagage" class="hidden">
+<header class="flex items-center px-5 pt-12 pb-4 bg-white border-b"><button onclick="showPage('accueil')" class="text-xl mr-4">←</button><h1 class="font-black text-xl">Déménagement</h1></header>
+<div class="px-5 mt-10 text-center"><p class="text-6xl">🚚</p><p class="font-black text-xl mt-4">Camion disponible</p><p class="text-sm text-gray-500 mt-2">Abidjan → partout en CI<br/>Dès 15 000 FCFA</p><button class="w-full mt-6 bg-[#FF6B00] text-white font-black py-4 rounded-xl">Demander devis gratuit</button></div>
+</div>
+
+<div id="page-assurance" class="hidden">
+<header class="flex items-center px-5 pt-12 pb-4 bg-white border-b"><button onclick="showPage('accueil')" class="text-xl mr-4">←</button><h1 class="font-black text-xl">Assurance Auto/Moto</h1></header>
+<div class="px-5 mt-10 text-center"><p class="text-6xl">🛡️</p><p class="font-black text-xl mt-4">Devis en 2 minutes</p><p class="text-sm text-gray-500 mt-2">Assurance obligatoire + tous risques<br/>Partenaires : Atlantique, SAHAM</p><button class="w-full mt-6 bg-black text-white font-black py-4 rounded-xl">Obtenir mon devis</button></div>
+</div>
+
+<!-- NAV BOTTOM -->
+<nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[400px] bg-white border-t flex justify-around py-3 z-50">
+<button onclick="showPage('accueil')" id="nav-accueil" class="flex flex-col items-center active-nav"><span class="text-xl">⌂</span><span class="text-[10px] font-bold">Accueil</span></button>
+<button onclick="showPage('taxi')" id="nav-services" class="flex flex-col items-center text-gray-400"><span class="text-xl">⊞</span><span class="text-[10px] font-bold">Services</span></button>
+<button class="flex flex-col items-center text-gray-400"><span class="text-xl">💼</span><span class="text-[10px] font-bold">Wallet</span></button>
+<button class="flex flex-col items-center text-gray-400"><span class="text-xl">👤</span><span class="text-[10px] font-bold">Profil</span></button>
+</nav>
+
+</div>
+
+<script>
+function showPage(name){
+document.querySelectorAll('[id^=\"page-\"]').forEach(p=>p.classList.add('hidden'));
+document.getElementById('page-'+name).classList.remove('hidden');
+document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active-nav'));
+if(name==='accueil'){document.getElementById('nav-accueil').classList.add('active-nav')}
+else{document.getElementById('nav-services').classList.add('active-nav')}
+window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
