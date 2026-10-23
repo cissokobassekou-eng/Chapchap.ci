@@ -147,4 +147,139 @@ window.scrollTo(0,0);
 }
 </script>
 </body>
+<<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>CHAPCHAP-CI - Super-App Ivoirienne</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#FF6B00">
+<style>
+*{font-family:'Inter',sans-serif}
+body{-webkit-tap-highlight-color:transparent;overscroll-behavior:none}
+.hidden{display:none!important}
+.nav-active{color:#FF6B00!important;font-weight:800;border-top:2px solid #FF6B00}
+.page-active{display:block!important}
+.no-scrollbar::-webkit-scrollbar{display:none}
+</style>
+</head>
+<body class="bg-[#F5F5F5] select-none">
+<div class="max-w-[430px] mx-auto min-h-screen bg-white relative pb-[88px] shadow-2xl overflow-hidden">
+
+<!-- ================= HEADER ================= -->
+<header id="main-header" class="bg-white px-5 pt-5 pb-3 flex justify-between items-center sticky top-0 z-30">
+<div>
+<p class="text-gray-400 text-[12px] leading-none">Bonjour,</p>
+<h1 class="font-black text-[22px] leading-tight">Aicha 👋</h1>
+<p class="text-[11px] text-gray-400 flex items-center gap-1">📍 Cocody, Abidjan • <span class="text-green-600 font-bold">En ligne</span></p>
+</div>
+<div class="flex gap-2 items-center">
+<button class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-[18px]">🔔</button>
+<div class="w-10 h-10 bg-[#FF6B00] rounded-full flex items-center justify-center text-white font-black">A</div>
+</div>
+</header>
+
+<!-- ================= HOME PAGE ================= -->
+<div id="home-page" class="page-active">
+<!-- BANNER PARRAINAGE -->
+<div class="mx-4 bg-gradient-to-br from-[#FF6B00] to-[#FF8C32] rounded-[20px] p-4 text-white flex justify-between items-center relative overflow-hidden">
+<div class="absolute -right-6 -top-6 w-24 h-24 bg-white/20 rounded-full"></div>
+<div class="relative z-10"><p class="font-black text-[15px]">Parrainage 2 000F</p><p class="text-[11px] opacity-90">Invite 1 ami = 2000F Wave direct</p><p class="text-[10px] mt-2 bg-black/20 inline-block px-2.5 py-1 rounded-full font-bold">CODE: AICHA2026</p></div>
+<button class="relative z-10 bg-white text-[#FF6B00] px-6 py-3 rounded-full text-[12px] font-black shadow-lg">Inviter</button>
+</div>
+
+<!-- SEARCH -->
+<div class="mx-4 mt-4 bg-[#F5F5F5] rounded-full px-4 py-3.5 flex items-center gap-3 border border-gray-100">
+<span class="text-gray-400">🔍</span>
+<input placeholder="Pharmacie, moto, artisan, attiéké..." class="bg-transparent outline-none text-[13px] w-full placeholder:text-gray-400">
+</div>
+
+<!-- 6 SERVICES GRID -->
+<div class="p-4">
+<div class="flex justify-between items-center mb-3"><p class="font-black text-[16px]">Services CHAPCHAP</p><span class="text-[11px] text-[#FF6B00] font-bold">Voir tout →</span></div>
+<div class="grid grid-cols-3 gap-3">
+<!-- 1 PHARMA -->
+<button onclick="openService('pharma')" class="bg-[#FFF7ED] p-3.5 rounded-[18px] text-center border border-orange-100 active:scale-95 transition"><div class="text-[28px]">💊</div><p class="text-[11px] font-extrabold mt-1 leading-tight">Pharmacie<br>de Garde</p><span class="mt-1 inline-block text-[8px] bg-green-500 text-white px-2 py-0.5 rounded-full font-bold">24/7 OUVERT</span></button>
+<!-- 2 TAXI MOTO -->
+<button onclick="openService('taxi')" class="bg-[#FFF7ED] p-3.5 rounded-[18px] text-center border border-orange-100 active:scale-95 transition"><div class="text-[28px]">🏍️</div><p class="text-[11px] font-extrabold mt-1">Taxi Moto</p><p class="text-[9px] text-gray-500 mt-0.5">5 min • 500F</p></button>
+<!-- 3 ARTISAN -->
+<button onclick="openService('artisan')" class="bg-[#FFF7ED] p-3.5 rounded-[18px] text-center border border-orange-100 active:scale-95 transition"><div class="text-[28px]">🔧</div><p class="text-[11px] font-extrabold mt-1">Artisan SOS</p><p class="text-[9px] text-gray-500">30 min chrono</p></button>
+<!-- 4 RESTAURANT -->
+<button onclick="openService('food')" class="bg-[#FFF7ED] p-3.5 rounded-[18px] text-center border border-orange-100 active:scale-95 transition"><div class="text-[28px]">🍛</div><p class="text-[11px] font-extrabold mt-1">Food</p><p class="text-[9px] text-gray-500">Attiéké, Alloco</p></button>
+<!-- 5 BAGAGE -->
+<button onclick="openService('bagage')" class="bg-[#FFF7ED] p-3.5 rounded-[18px] text-center border border-orange-100 active:scale-95 transition"><div class="text-[28px]">📦</div><p class="text-[11px] font-extrabold mt-1">Bagage 50/50</p><p class="text-[9px] text-gray-500">ABJ ↔ BKÉ</p></button>
+<!-- 6 ASSURANCE -->
+<button onclick="openService('assurance')" class="bg-[#FFF7ED] p-3.5 rounded-[18px] text-center border border-orange-100 active:scale-95 transition"><div class="text-[28px]">🛡️</div><p class="text-[11px] font-extrabold mt-1">Assurance</p><p class="text-[9px] text-gray-500">NSIA / SUNU</p></button>
+</div>
+</div>
+
+<!-- WALLET BLACK -->
+<div class="mx-4 mt-2 bg-[#0A0A0A] text-white rounded-[20px] p-5 relative overflow-hidden">
+<div class="absolute right-0 top-0 w-32 h-32 bg-[#FF6B00]/20 rounded-full blur-2xl"></div>
+<div class="relative z-10 flex justify-between items-start"><div><p class="text-gray-400 text-[11px] tracking-widest">PORTEFEUILLE • WAVE</p><p class="text-[28px] font-black mt-1">15 000 <span class="text-[16px] font-bold">F CFA</span></p><p class="text-[11px] text-green-400 mt-1">▲ +2 500F cette semaine</p></div><span class="bg-[#FF6B00] text-[10px] px-2.5 py-1 rounded-full font-black">VÉRIFIÉ ✓</span></div>
+<div class="relative z-10 flex gap-2 mt-5"><button class="flex-1 bg-[#FF6B00] py-3 rounded-full text-[12px] font-black">💸 Envoyer</button><button class="flex-1 bg-zinc-800 py-3 rounded-full text-[12px] font-bold border border-zinc-700">➕ Recharger</button></div>
+<div class="relative z-10 flex gap-2 mt-4"><span class="bg-white text-black px-3.5 py-1.5 rounded-full text-[10px] font-black">Wave</span><span class="bg-zinc-800 px-3.5 py-1.5 rounded-full text-[10px] font-bold border border-zinc-700">MTN MoMo</span><span class="bg-zinc-800 px-3.5 py-1.5 rounded-full text-[10px] font-bold border border-zinc-700">Orange Money</span></div>
+</div>
+
+<!-- MODE CHAUFFEUR -->
+<div class="mx-4 mt-3 bg-[#FFF7ED] rounded-[16px] p-3.5 flex justify-between items-center border border-orange-100">
+<div class="flex items-center gap-3"><div class="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white">🚕</div><div><p class="text-[13px] font-black">Mode Chauffeur</p><p class="text-[10px] text-gray-500">Gains aujourd'hui • 3 courses</p></div></div>
+<div class="text-right"><p class="font-black text-[#FF6B00] text-[15px]">12 500 F</p><p class="text-[10px] text-green-600 font-bold">Retrait dispo</p></div>
+</div>
+
+<div class="h-6"></div>
+</div>
+
+<!-- ================= SERVICE PAGES ================= -->
+<div id="service-modal" class="hidden fixed inset-0 bg-[#FAFAFA] z-50 max-w-[430px] mx-auto overflow-auto">
+<div class="bg-white p-5 flex items-center gap-3 sticky top-0 z-10 border-b"><button onclick="closeService()" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">←</button><h2 id="modal-title" class="font-black text-[18px]">Service</h2></div>
+<div class="p-5">
+
+<div id="pharma-page" class="hidden space-y-4"><div class="bg-green-50 border border-green-200 p-4 rounded-[16px]"><p class="font-black text-green-800">📍 Pharmacie des Lagunes - Cocody</p><p class="text-[12px] text-green-700 mt-1">Ouverte 24/7 • À 0.8 km • Note 4.8★</p><div class="flex gap-2 mt-3"><button class="flex-1 bg-green-600 text-white py-3 rounded-full font-black text-[13px]">📞 Appeler</button><button class="flex-1 bg-white border py-3 rounded-full font-bold text-[13px]">Itinéraire</button></div></div><div class="bg-white p-4 rounded-[16px] border"><p class="font-bold text-[13px]">Médicaments urgents disponibles</p><p class="text-[11px] text-gray-500">Paracétamol, Efferalgan, Ventoline...</p></div></div>
+
+<div id="taxi-page" class="hidden space-y-4"><div class="bg-black text-white p-5 rounded-[18px]"><p class="text-[12px] text-gray-400">Course estimée</p><p class="text-[32px] font-black">1 500 F</p><p class="text-[12px] text-gray-400">Cocody Riviera → Plateau • 12 min • Moto 🏍️</p><button class="mt-4 w-full bg-[#FF6B00] py-4 rounded-full font-black">Commander Moto maintenant</button></div><p class="text-[11px] text-gray-400 text-center">Paiement Wave, MTN, Orange Money accepté</p></div>
+
+<div id="artisan-page" class="hidden"><div class="grid grid-cols-2 gap-3"><div class="bg-white p-4 rounded-[16px] border text-center"><p class="text-2xl">🔌</p><p class="font-bold text-[12px] mt-1">Électricien</p><p class="text-[10px] text-green-600">Dispo 15 min</p></div><div class="bg-white p-4 rounded-[16px] border text-center"><p class="text-2xl">🚿</p><p class="font-bold text-[12px] mt-1">Plombier</p><p class="text-[10px] text-green-600">Dispo 20 min</p></div><div class="bg-white p-4 rounded-[16px] border text-center"><p class="text-2xl">❄️</p><p class="font-bold text-[12px] mt-1">Climaticien</p><p class="text-[10px] text-gray-500">Sur RDV</p></div><div class="bg-white p-4 rounded-[16px] border text-center"><p class="text-2xl">🔑</p><p class="font-bold text-[12px] mt-1">Serrurier</p><p class="text-[10px] text-green-600">Dispo 10 min</p></div></div></div>
+
+<div id="food-page" class="hidden space-y-3"><div class="bg-white p-4 rounded-[16px] border flex justify-between"><div><p class="font-bold">Maquis Chez Aicha</p><p class="text-[11px] text-gray-500">Attiéké poisson • 2 500F • 25 min</p></div><span>🍛</span></div><div class="bg-white p-4 rounded-[16px] border flex justify-between"><div><p class="font-bold">Alloco Express</p><p class="text-[11px] text-gray-500">Alloco poulet • 2 000F • 20 min</p></div><span>🍗</span></div></div>
+
+<div id="bagage-page" class="hidden"><div class="bg-orange-500 text-white p-5 rounded-[18px]"><p class="font-black text-[18px]">📦 BAGAGE 50/50</p><p class="text-[13px] mt-2">Abidjan ↔ Bouaké • Yamoussoukro • Daloa</p><p class="text-[24px] font-black mt-3">65 000 F</p><p class="text-[11px] opacity-80">50kg • Assurance incluse • Départ quotidien 6h</p><button class="mt-4 w-full bg-black py-3 rounded-full font-black">Réserver ma place</button></div></div>
+
+<div id="assurance-page" class="hidden"><div class="bg-blue-50 border border-blue-200 p-5 rounded-[18px]"><p class="font-black text-blue-900">🛡️ Assurance NSIA</p><p class="text-[12px] mt-2">Assure ta moto, ton taxi, ta maison à partir de 15 000F/mois</p><button class="mt-3 w-full bg-blue-600 text-white py-3 rounded-full font-black">Devis gratuit</button></div></div>
+
+</div>
+</div>
+
+<!-- ================= BOTTOM NAV ================= -->
+<nav class="fixed bottom-0 max-w-[430px] w-full bg-white/95 backdrop-blur-md border-t flex justify-around py-2.5 z-40">
+<button onclick="showHome()" class="nav-active flex flex-col items-center gap-0.5 px-4 py-1"><span class="text-[20px]">🏠</span><span class="text-[10px]">Accueil</span></button>
+<button class="text-gray-400 flex flex-col items-center gap-0.5 px-4 py-1"><span class="text-[20px]">🔍</span><span class="text-[10px]">Services</span></button>
+<button class="text-gray-400 flex flex-col items-center gap-0.5 px-4 py-1"><span class="text-[20px]">💳</span><span class="text-[10px]">Wallet</span></button>
+<button class="text-gray-400 flex flex-col items-center gap-0.5 px-4 py-1"><span class="text-[20px]">👤</span><span class="text-[10px]">Profil</span></button>
+</nav>
+
+</div>
+
+<script>
+// Navigation
+function openService(id){
+document.getElementById('home-page').classList.add('hidden');
+document.getElementById('service-modal').classList.remove('hidden');
+document.querySelectorAll('[id$="-page"]').forEach(e=>e.classList.add('hidden'));
+document.getElementById(id+'-page').classList.remove('hidden');
+document.getElementById('modal-title').innerText = document.getElementById(id+'-page').querySelector('h2, p')?.innerText || id;
+window.scrollTo(0,0);
+}
+function closeService(){
+document.getElementById('service-modal').classList.add('hidden');
+document.getElementById('home-page').classList.remove('hidden');
+}
+function showHome(){closeService();}
+// TODO DEV: Connecter API Wave, MTN, Orange Money ici
+// TODO DEV: Connecter Firebase / Supabase pour auth Aicha
+// TODO DEV: Ajouter mapbox pour taxi-moto live tracking
+</script>
+</body>
 </html>
