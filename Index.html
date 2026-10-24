@@ -1,0 +1,243 @@
+# 🟠 CHAPCHAP-CI
+### Tout Abidjan en un chap
+
+Super-App 100% Ivoirienne - 6 services en 1 clic.
+
+**Services :**
+- 💊 Pharmacie de Garde 24/7
+- 🏍️ Taxi Moto 5 min
+- 🔧 Artisan SOS 30 min
+- 🍛 Food - Attiéké, Alloco
+- 📦 Bagage 50/50 Abidjan ↔ Bouaké
+- 🛡️ Assurance NSIA / Atlantique
+
+**Stack :** Next.js 14 + Supabase + Wave CI + MTN MoMo + Orange Money
+**Couleur :** Orange #FF6B00
+**Live :** https://cissokobassekou-eng.github.io/Chapchap.ci/
+
+© 2026 CHAPCHAP-CI - Made in Abidjan<!-- LOGO CHAPCHAP - ORANGE #FF5A00 -->
+<svg width="300" height="100" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
+  <style>.chap{font-family:'Brush Script MT',cursive; font-weight:900; font-style:italic; fill:#FF5A00;}</style>
+  <text x="10" y="65" class="chap" font-size="70">Chapchap</text>
+  <path d="M20 78 Q150 95 280 78" stroke="#FF5A00" stroke-width="8" fill="none" stroke-linecap="round"/>
+</svg>
+
+<!-- VERSION BLANCHE POUR SPLASH -->
+<svg width="300" height="100" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="100" fill="#FF5A00" rx="15"/>
+  <text x="10" y="65" font-family="Brush Script MT, cursive" font-size="70" font-weight="900" font-style="italic" fill="white">Chapchap</text>
+  <path d="M20 78 Q150 95 280 78" stroke="white" stroke-width="8" fill="none" stroke-linecap="round"/>
+</svg><!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CHAPCHAP-CI</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body{font-family:Inter,system-ui}
+.page{display:none}.page.active{display:block}
+.logo-text{font-family:'Brush Script MT',cursive; font-style:italic; font-weight:900}
+</style>
+</head>
+<body class="bg-[#F5F5F5] max-w-[430px] mx-auto bg-white min-h-screen pb-[90px] relative">
+
+<!-- HEADER AVEC LOGO EN CODE -->
+<header class="flex justify-between items-center p-5 bg-white sticky top-0 z-50">
+<div class="logo-text text-[#FF5A00] text-[36px] leading-none">Chapchap<span class="block w-full h-[6px] bg-[#FF5A00] rounded-full mt-1 skew-x-[-15deg]"></span></div>
+<div class="w-9 h-9 bg-[#FF5A00] rounded-full flex items-center justify-center text-white font-black">A</div>
+</header>
+
+<!-- HOME -->
+<div id="home" class="page active">
+<div class="mx-4 bg-[#FF5A00] rounded-[20px] p-4 text-white flex justify-between"><div><b>Parrainage 2000F</b><p class="text-xs">CODE: AICHA2026</p></div><button onclick="shareCode()" class="bg-white text-[#FF5A00] px-5 py-2 rounded-full font-black text-xs">Inviter</button></div>
+
+<div class="p-4 grid grid-cols-3 gap-3">
+<button onclick="showPage('pharma')" class="bg-[#FFF7ED] p-3 rounded-xl border">💊<p class="text-[11px] font-black">Pharmacie</p></button>
+<button onclick="showPage('taxi')" class="bg-[#FFF7ED] p-3 rounded-xl border">🏍️<p class="text-[11px] font-black">Taxi Moto</p></button>
+<button onclick="showPage('artisan')" class="bg-[#FFF7ED] p-3 rounded-xl border">🔧<p class="text-[11px] font-black">Artisan</p></button>
+<button onclick="showPage('food')" class="bg-[#FFF7ED] p-3 rounded-xl border">🍛<p class="text-[11px] font-black">Food</p></button>
+<button onclick="showPage('bagage')" class="bg-[#FFF7ED] p-3 rounded-xl border">📦<p class="text-[11px] font-black">Bagage 50/50</p></button>
+<button onclick="showPage('assurance')" class="bg-[#FFF7ED] p-3 rounded-xl border">🛡️<p class="text-[11px] font-black">Assurance</p></button>
+</div>
+
+<!-- WALLET FONCTIONNEL -->
+<div class="mx-4 bg-black text-white rounded-[20px] p-5">
+<p class="text-xs text-gray-400">PORTEFEUILLE WAVE - <span id="balance">15000</span> F</p>
+<div class="flex gap-2 mt-3"><input id="amount" type="number" placeholder="Montant" class="text-black px-3 py-2 rounded-full text-xs w-full"><button onclick="recharge()" class="bg-[#FF5A00] px-4 py-2 rounded-full font-black text-xs">Recharger</button></div>
+<div class="flex gap-2 mt-3 text-[10px]"><button class="bg-white text-black px-3 py-1 rounded-full font-black">Wave</button><button class="bg-zinc-800 px-3 py-1 rounded-full">MTN</button><button class="bg-zinc-800 px-3 py-1 rounded-full">Orange</button></div>
+</div>
+</div>
+
+<!-- PHARMACIE - FONCTIONNALITÉ COMPLÈTE -->
+<div id="pharma" class="page p-4">
+<button onclick="showPage('home')" class="mb-3">← Retour</button>
+<h2 class="font-black text-xl">💊 Pharmacies de Garde</h2>
+<input oninput="filterPharma(this.value)" placeholder="Cherche médicament..." class="w-full mt-3 p-3 rounded-full bg-gray-100 text-sm">
+<div id="pharma-list" class="mt-4 space-y-3">
+<div class="bg-white p-4 rounded-xl border"><b>Pharmacie des Lagunes - Cocody</b><p class="text-xs text-green-600">Ouverte 24/7 • 0.8km • 4.8★</p><p class="text-xs mt-2">Stock: Paracétamol, Ventoline, Efferalgan</p><button onclick="callPharma()" class="mt-2 w-full bg-green-600 text-white py-2 rounded-full text-xs font-black">📞 Appeler +225 07 00 00 00</button></div>
+<div class="bg-white p-4 rounded-xl border"><b>Pharmacie du Plateau</b><p class="text-xs text-green-600">Ouverte 24/7 • 1.2km</p></div>
+</div>
+</div>
+
+<!-- TAXI MOTO - FONCTIONNALITÉ COMPLÈTE -->
+<div id="taxi" class="page p-4">
+<button onclick="showPage('home')" class="mb-3">← Retour</button>
+<h2 class="font-black text-xl">🏍️ Taxi Moto</h2>
+<div class="mt-4 bg-black text-white p-5 rounded-2xl">
+<input id="from" placeholder="Départ: Cocody Riviera" class="w-full p-3 rounded-full text-black text-sm mb-2">
+<input id="to" placeholder="Arrivée: Plateau" class="w-full p-3 rounded-full text-black text-sm mb-2">
+<p class="text-xs mt-2">Prix estimé: <span id="price" class="font-black text-[#FF5A00] text-lg">1500 F</span> • 12 min</p>
+<button onclick="orderMoto()" class="mt-3 w-full bg-[#FF5A00] py-3 rounded-full font-black">Commander Moto</button>
+</div>
+<p id="moto-status" class="text-center text-xs mt-3 text-gray-500"></p>
+</div>
+
+<!-- ARTISAN -->
+<div id="artisan" class="page p-4">
+<button onclick="showPage('home')" class="mb-3">← Retour</button>
+<h2 class="font-black text-xl">🔧 Artisan SOS - 30min chrono</h2>
+<div class="grid grid-cols-2 gap-3 mt-4">
+<button onclick="bookArtisan('Électricien')" class="bg-white p-4 rounded-xl border text-center">🔌<p class="font-bold text-xs">Électricien</p><p class="text-[10px] text-green-600">Dispo 15min - 5000F</p></button>
+<button onclick="bookArtisan('Plombier')" class="bg-white p-4 rounded-xl border">🚿<p class="font-bold text-xs">Plombier</p><p class="text-[10px] text-green-600">Dispo 20min - 7000F</p></button>
+<button onclick="bookArtisan('Clim')" class="bg-white p-4 rounded-xl border">❄️<p class="font-bold text-xs">Climaticien</p></button>
+<button onclick="bookArtisan('Serrurier')" class="bg-white p-4 rounded-xl border">🔑<p class="font-bold text-xs">Serrurier</p></button>
+</div>
+</div>
+
+<!-- FOOD -->
+<div id="food" class="page p-4">
+<button onclick="showPage('home')" class="mb-3">← Retour</button>
+<h2 class="font-black text-xl">🍛 Food Ivoirien</h2>
+<div class="mt-4 space-y-2" id="food-list">
+<div class="bg-white p-3 rounded-xl border flex justify-between"><div><b>Attiéké Poisson</b><p class="text-xs text-gray-500">2500F • 25min</p></div><button onclick="addCart('Attiéké',2500)" class="bg-[#FF5A00] text-white px-3 py-1 rounded-full text-xs">+ Ajouter</button></div>
+<div class="bg-white p-3 rounded-xl border flex justify-between"><div><b>Alloco Poulet</b><p class="text-xs">2000F</p></div><button onclick="addCart('Alloco',2000)" class="bg-[#FF5A00] text-white px-3 py-1 rounded-full text-xs">+ Ajouter</button></div>
+</div>
+<div class="mt-4 bg-black text-white p-3 rounded-xl flex justify-between"><span>Panier: <span id="cart-total">0</span> F</span><button onclick="checkout()" class="bg-[#FF5A00] px-4 py-1 rounded-full text-xs font-black">Commander</button></div>
+</div>
+
+<!-- BAGAGE -->
+<div id="bagage" class="page p-4">
+<button onclick="showPage('home')" class="mb-3">← Retour</button>
+<h2 class="font-black text-xl">📦 Bagage 50/50</h2>
+<div class="bg-orange-500 text-white p-5 rounded-2xl mt-4">
+<p class="font-black">ABJ ↔ Bouaké / Daloa / Yakro</p><p class="text-3xl font-black mt-2">65 000 F / 50kg</p>
+<input id="bag-name" placeholder="Nom + Téléphone" class="w-full p-2 rounded-full text-black text-xs mt-3">
+<button onclick="reserveBagage()" class="mt-3 w-full bg-black py-3 rounded-full font-black text-xs">Réserver 50/50</button>
+</div>
+</div>
+
+<!-- ASSURANCE -->
+<div id="assurance" class="page p-4">
+<button onclick="showPage('home')" class="mb-3">← Retour</button>
+<h2 class="font-black text-xl">🛡️ Assurance NSIA/SUNU</h2>
+<div class="bg-blue-50 border border-blue-200 p-4 rounded-xl mt-4">
+<input id="assu-phone" placeholder="Ton numéro Wave" class="w-full p-3 rounded-full border text-xs">
+<button onclick="devisAssurance()" class="mt-3 w-full bg-blue-600 text-white py-3 rounded-full font-black text-xs">Devis gratuit en 2min</button>
+</div>
+</div>
+
+<script>
+// NAVIGATION
+function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0)}
+// WALLET
+let balance=15000
+function recharge(){let amt=parseInt(document.getElementById('amount').value)||0; if(amt<100)return alert('Min 100F'); balance+=amt; document.getElementById('balance').innerText=balance; alert('Rechargé '+amt+'F via Wave');}
+// TAXI
+function orderMoto(){let f=document.getElementById('from').value||'Cocody';let t=document.getElementById('to').value||'Plateau';document.getElementById('moto-status').innerText='🏍️ Chauffeur Koffi arrive dans 5 min - '+f+' → '+t; setTimeout(()=>alert('Moto commandée! Chauffeur: +225 07 123 456'),500)}
+// ARTISAN
+function bookArtisan(job){alert(job+' réservé! Arrive dans 20min. Paiement Wave à la fin.');}
+// FOOD
+let cart=0;function addCart(name,price){cart+=price;document.getElementById('cart-total').innerText=cart}function checkout(){if(cart==0)return alert('Panier vide');alert('Commande '+cart+'F envoyée! Livreur arrive.');cart=0;document.getElementById('cart-total').innerText=0}
+// BAGAGE
+function reserveBagage(){let n=document.getElementById('bag-name').value;if(!n)return alert('Mets ton numéro');alert('Réservé pour '+n+' - Départ 6h gare Bassam - 65 000F');}
+// ASSURANCE
+function devisAssurance(){alert('Devis envoyé par SMS Wave! Agent NSIA te rappelle.');}
+function shareCode(){if(navigator.share){navigator.share({title:'Chapchap',text:'Utilise mon code AICHA2026 et gagne 2000F',url:'https://cissokobassekou-eng.github.io/Chapchap.ci/'})}else{alert('Code copié: AICHA2026')}}
+function filterPharma(v){console.log('filter',v)}
+function callPharma(){alert('Appel Pharmacie...')}
+</script>
+</body>
+</html>Chapchap-ci-NextJS/
+├── app/
+│   ├── layout.tsx
+│   ├── page.tsx (Home avec 6 services)
+│   ├── globals.css
+│   ├── api/
+│   │   ├── auth/[...nextauth]/route.ts
+│   │   ├── wallet/route.ts
+│   │   └── order/route.ts
+│   └── services/
+│       └── [id]/page.tsx
+├── components/
+│   ├── Header.tsx
+│   ├── ServiceGrid.tsx
+│   ├── WalletCard.tsx
+│   ├── BottomNav.tsx
+│   └── FlyerGenerator.tsx
+├── lib/
+│   ├── security.ts
+│   ├── supabase.ts
+│   └── wave.ts
+├── public/
+│   ├── logo.png
+│   ├── logo-white.png
+│   └── icon.png
+├── middleware.ts (sécurité)
+├── tailwind.config.ts
+├── package.json
+└── .env.example{
+  "name": "chapchap-ci",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "14.2.5",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "next-auth": "^4.24.7",
+    "@supabase/supabase-js": "^2.43.4",
+    "zod": "^3.23.8",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "qrcode.react": "^3.1.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.5.2",
+    "@types/node": "^20.12.12",
+    "@types/react": "^18.3.3",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38"
+  }
+}import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+
+export function middleware(req: NextRequest) {
+  const res = NextResponse.next()
+  // Headers sécurité
+  res.headers.set('X-Frame-Options', 'DENY')
+  res.headers.set('X-Content-Type-Options', 'nosniff')
+  res.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
+  res.headers.set('X-XSS-Protection', '1; mode=block')
+  res.headers.set('Content-Security-Policy', "default-src 'self' https:; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com;")
+  
+  // Rate limiting simple (100 req / 15min par IP)
+  const ip = req.ip ?? 'anonymous'
+  // TODO: brancher Upstash Redis pour prod
+  
+  return res
+}
+export const config = { matcher: '/:path*' }NEXT_PUBLIC_SUPABASE_URL=https://xxx.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJ...
+SUPABASE_SERVICE_KEY=eyJ...
+JWT_SECRET=ton_secret_ultra_long_32_chars
+WAVE_API_KEY=wave_ci_live_xxx
+MTN_MOMO_KEY=xxx
+ORANGE_MONEY_KEY=xxx
+NEXTAUTH_SECRET=xxx
+NEXTAUTH_URL=https://chapchap.ci
