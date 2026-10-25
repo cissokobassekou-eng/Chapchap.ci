@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHAPCHAP-CI - 6 Services Flow Complet</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,sans-serif}
+body{max-width:420px;margin:0 auto;background:#000;min-height:100vh}
+.page{display:none;min-height:100vh;flex-direction:column}.page.active{display:flex}
+.header{padding:14px;display:flex;align-items:center;gap:10px;font-weight:900;background:#fff;border-bottom:1px solid #eee}
+.btn{width:calc(100% - 32px);margin:16px;background:#FF6B00;color:#fff;border:none;padding:16px;border-radius:14px;font-weight:900;cursor:pointer}
+.card{background:#fff;border-radius:18px;margin:12px 16px;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+.orange{background:linear-gradient(135deg,#FF8C2F,#FF6B00);color:#fff;border-radius:16px;padding:16px;margin:12px 16px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 16px}
+.tile{background:#fff;border-radius:18px;padding:14px;text-align:left;border:1px solid #f0f0f0;cursor:pointer}
+.tile b{font-size:14px;display:block}
+.tile span{font-size:11px;opacity:.6}
+.badge{font-size:10px;background:#FFF2E6;color:#FF6B00;padding:4px 8px;border-radius:20px;font-weight:700}
+.dark{background:#111;color:#fff;border-radius:16px;margin:12px 16px;padding:16px;border:1px solid #222}
+</style>
+</head>
+<body>
+
+<!-- ACCUEIL 6 CASES -->
+<div id="home" class="page active" style="background:#f8f8f8">
+<div style="background:#fff;padding:14px;display:flex;justify-content:space-between;align-items:center"><b style="color:#FF6B00">CHAPCHAP-CI</b><span>🔔 👤</span></div>
+<div style="padding:16px"><h2>Bonjour Aicha,</h2><p style="opacity:.6">Que cherchez-vous aujourd'hui?</p>
+<div style="margin-top:12px;background:#fff;border-radius:12px;padding:12px;display:flex;gap:8px"><span>🔍</span><input placeholder="Rechercher un service, restaurant, artisan..." style="border:none;width:100%;outline:none"></div></div>
+<div class="orange"><b>Parrainage 2000 FCFA</b><p style="font-size:12px;margin-top:4px">Invite un ami et gagnez 2000F chacun !</p></div>
+<h3 style="padding:0 16px;margin-top:8px">Services populaires</h3>
+
+<div class="grid">
+<div class="tile" onclick="openPage('pharma')"><div style="background:#FF8C2F;width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center">➕</div><b>Pharmacie</b><span>Garde 24h/7</span><br><span>📍 À 1.2km • Ouvert</span></div>
+<div class="tile" onclick="openPage('taxi')"><div style="background:#FF8C2F;width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center">🏍️</div><b>Taxi/Moto</b><span>Course rapide</span><br><span>⏱️ 2 min</span></div>
+<div class="tile" onclick="openPage('artisan')"><div style="background:#FF8C2F;width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center">🔧</div><b>Artisan</b><span>SOS Plombier • Élec</span><br><span>⭐ 4.8 • 120+ pros</span></div>
+<div class="tile" onclick="openPage('bnb')" style="border:2px solid #FF6B00"><div style="background:#111;width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff">🏠</div><b>Logement BNB</b><span>Studio Cocody • 12k</span><br><span>⭐ 4.6 • Villa moderne</span></div>
+<div class="tile" onclick="openPage('resto')"><div style="background:#FF8C2F;width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center">🍽️</div><b>Restaurant</b><span>Maquis Plats locaux</span><br><span>⏱️ 25-40 min</span></div>
+<div class="tile" onclick="openPage('bagage')"><div style="background:#FF8C2F;width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center">🚚</div><b>Bagage</b><span>Déménagement</span><br><span>À partir de 15 000F</span></div>
+</div>
+
+<div class="dark" style="margin-top:20px"><p style="font-size:10px;color:#FF6B00;letter-spacing:2px">🔒 ADMIN CHAPCHAP - MARGE CACHÉE 15%</p>
+<p style="font-size:12px;margin-top:8px;opacity:.7">Chaque service a sa marge cachée. Client paie X, Pro reçoit 85%, CHAPCHAP garde 15% invisible.</p>
+<button class="btn" style="width:100%;margin:12px 0 0 0;background:#222;border:1px solid #FF6B00" onclick="openPage('admin')">Voir Vue Admin Secrète →</button></div>
+</div>
+
+<!-- 1. PHARMACIE FLOW -->
+<div id="pharma" class="page" style="background:#fff"><div class="header"><span onclick="openPage('home')">←</span> Pharmacie</div><div class="card"><span class="badge">OUVERTE 24H/7 • À 1.2KM</span><h3 style="margin-top:8px">Pharmacie des Lagunes - Cocody</h3><p>⭐ 4.9 • 342 avis • Livraison 15 min</p></div><div class="card"><input placeholder="Quel médicament? (Doliprane, etc)" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:10px"><button class="btn" style="width:100%;margin:12px 0 0 0" onclick="alert('CHAPCHAP: Commande pharmacie envoyée • Client paie 5000F • Pharmacie reçoit 4250F • Marge CHAPCHAP 750F cachée')">Commander - 5000F</button></div></div>
+
+<!-- 2. TAXI FLOW -->
+<div id="taxi" class="page" style="background:#fff"><div class="header"><span onclick="openPage('home')">←</span> Taxi/Moto - Course rapide</div><div style="height:200px;background:#FFF2E6;display:flex;align-items:center;justify-content:center">🗺️ Carte Abidjan - Cocody → Plateau</div><div class="card"><b>Cocody Riviera → Plateau</b><p>🏍️ Moto: 1500F • 🚗 Taxi: 3500F • ⏱️ 2 min</p><button class="btn" style="width:100%;margin:12px 0 0 0" onclick="alert('CHAPCHAP: Course confirmée • Client paie 1500F • Chauffeur reçoit 1275F • Marge CHAPCHAP 225F')">Commander Moto 1500F</button></div></div>
+
+<!-- 3. ARTISAN FLOW -->
+<div id="artisan" class="page" style="background:#fff"><div class="header"><span onclick="openPage('home')">←</span> Artisan - SOS</div><div class="grid" style="grid-template-columns:1fr"><div class="tile" style="display:flex;gap:12px;align-items:center"><span>🔧</span><div><b>Plombier - Fuite d'eau</b><span>Intervention en 30 min • À partir de 10 000F</span></div></div><div class="tile" style="display:flex;gap:12px;align-items:center"><span>⚡</span><div><b>Électricien - Panne</b><span>Disponible maintenant • À partir de 8000F</span></div></div></div><button class="btn" onclick="alert('CHAPCHAP: Artisan en route • Client paie 10 000F • Artisan reçoit 8500F • Marge CHAPCHAP 1500F cachée')">Appeler un Plombier - 10 000F</button></div>
+
+<!-- 4. BNB FLOW - LE PLUS IMPORTANT -->
+<div id="bnb" class="page" style="background:#fff">
+<div class="header" style="background:#FF6B00;color:#fff"><span onclick="openPage('home')">←</span> CHAPCHAP-CI • Logement BNB</div>
+<div style="height:180px;background:url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600') center/cover"></div>
+<div style="padding:16px"><h2>Studio Meublé Cocody</h2><p>⭐ 4.8 • 120 avis • 📍 Cocody Riviera • Wifi • Climatisation</p><h2 style="color:#FF6B00;margin-top:8px">12 000F / nuit</h2><p style="font-size:11px;opacity:.5">Prix CHAPCHAP - Commission incluse invisible</p>
+<div style="margin-top:12px;display:flex;gap:8px"><button style="flex:1;padding:10px;border:1px solid #ddd;border-radius:10px;background:#fff">📅 15 Déc</button><button style="flex:1;padding:10px;border:1px solid #ddd;border-radius:10px;background:#fff">📅 17 Déc</button></div>
+<div style="margin-top:12px;background:#FFF7ED;padding:12px;border-radius:12px"><div style="display:flex;justify-content:space-between"><span>2 nuits x 12 000F</span><b>24 000F</b></div><div style="display:flex;justify-content:space-between;margin-top:6px;border-top:1px dashed #FF6B00;padding-top:6px"><b>Total à payer</b><b style="color:#FF6B00">24 000F</b></div></div>
+</div>
+<button class="btn" onclick="openPage('bnbConfirm')">Réserver sur CHAPCHAP</button>
+</div>
+
+<div id="bnbConfirm" class="page" style="background:#fff"><div class="header"><span onclick="openPage('bnb')">←</span> Confirmation BNB</div><div class="card" style="background:#f0fdf4;border:1px solid #16a34a"><b>✅ Réservation confirmée #BNB-2248</b><p>Studio Cocody • 15-17 Déc • Koffi</p></div>
+<div class="dark"><p>🔒 FLOW CASH CHAPCHAP-CI BNB</p><div style="margin-top:10px"><div style="display:flex;justify-content:space-between"><span>Client a payé</span><b>24 000F</b></div><div style="display:flex;justify-content:space-between"><span>Proprio reçoit (85%)</span><b style="color:#4ade80">20 400F</b></div><div style="display:flex;justify-content:space-between;margin-top:8px;padding-top:8px;border-top:1px solid #333"><span>Marge CHAPCHAP (15%)</span><b style="color:#FF6B00">3 600F CACHÉE</b></div></div></div>
+<button class="btn" onclick="openPage('home')">Retour Accueil</button></div>
+
+<!-- 5. RESTO FLOW -->
+<div id="resto" class="page" style="background:#fff"><div class="header"><span onclick="openPage('home')">←</span> Restaurant Maquis</div><div class="card"><b>Maquis Le Grand Canari - Yopougon</b><p>⭐ 4.7 • Attiéké • Poisson braisé • Livraison 25-40 min</p><div style="margin-top:10px"><div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee"><span>Attiéké Poisson + Bière</span><b>5000F</b></div></div><button class="btn" style="width:100%;margin:12px 0 0 0" onclick="alert('CHAPCHAP: Commande resto • Client paie 5000F • Resto reçoit 4250F • Marge 750F')">Commander 5000F</button></div></div>
+
+<!-- 6. BAGAGE FLOW -->
+<div id="bagage" class="page" style="background:#fff"><div class="header"><span onclick="openPage('home')">←</span> Bagage - Déménagement</div><div class="card"><b>Camion disponible - Abidjan</b><p>🚚 3 tonnes • Chargement inclus • Chauffeur • À partir de 15 000F</p><input placeholder="De: Cocody → Vers: Bingerville" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;margin-top:10px"><button class="btn" style="width:100%;margin:12px 0 0 0" onclick="alert('CHAPCHAP: Camion réservé • Client paie 15 000F • Transporteur reçoit
+    12 750F • Marge 2250F')">Réserver Camion 15 000F</button></div></div>
+
+<!-- ADMIN SECRET GLOBAL -->
+<div id="admin" class="page" style="background:#000"><div class="header" style="background:#000;color:#fff;border-bottom:1px solid #222"><span onclick="openPage('home')">←</span> 🔒 CHAPCHAP-CI ADMIN - CONFIDENTIEL</div>
+<div style="padding:16px">
+<div class="dark"><p style="color:#FF6B00;font-size:11px">MARGE CACHÉE PAR SERVICE - 15% CHAPCHAP</p>
+<div style="margin-top:12px">
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #222"><span>💊 Pharmacie 5000F</span><b style="color:#FF6B00">750F</b></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #222"><span>🏍️ Taxi 1500F</span><b style="color:#FF6B00">225F</b></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #222"><span>🔧 Artisan 10 000F</span><b style="color:#FF6B00">1500F</b></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #222"><span>🏠 BNB 24 000F</span><b style="color:#FF6B00">3600F</b></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #222"><span>🍽️ Resto 5000F</span><b style="color:#FF6B00">750F</b></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0"><span>🚚 Bagage 15 000F</span><b style="color:#FF6B00">2250F</b></div>
+</div>
+<div style="margin-top:16px;background:#052e1a;border:1px solid #16a34a;padding:12px;border-radius:12px"><b style="color:#4ade80">Total marge journalière estimée: 9075F si 1 commande par service</b><p style="font-size:11px;opacity:.7;margin-top:4px">Invisible pour clients et prestataires</p></div>
+</div>
+</div></div>
+
+<script>function openPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0)}</script>
+</body>
+</html>
