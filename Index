@@ -1,0 +1,40 @@
+<!-- SÉLECTEUR DE RÔLE - EN HAUT DE TON APP -->
+<div style="background:#101828;color:#fff;padding:10px;display:flex;gap:8px;overflow:auto">
+ <button onclick="openPage('client')" style="background:#FF6B00;color:#fff;border:none;padding:8px 12px;border-radius:20px;font-weight:700">👤 CLIENT</button>
+ <button onclick="openPage('driverMoto')" style="background:#fff;color:#000;border:none;padding:8px 12px;border-radius:20px">🏍️ MOTO DRIVER</button>
+ <button onclick="openPage('driverTaxi')" style="background:#fff;color:#000;border:none;padding:8px 12px;border-radius:20px">🚗 TAXI DRIVER</button>
+ <button onclick="openPage('restau')" style="background:#fff;color:#000;border:none;padding:8px 12px;border-radius:20px">🍛 RESTO</button>
+ <button onclick="openPage('camion')" style="background:#fff;color:#000;border:none;padding:8px 12px;border-radius:20px">🚚 CAMION</button>
+ <button onclick="openPage('admin')" style="background:#fff;color:#000;border:none;padding:8px 12px;border-radius:20px">📊 ADMIN</button>
+</div>
+
+<!-- INTERFACE 2: DRIVER MOTO -->
+<div id="driverMoto" class="page">
+<div class="top"><b>🏍️ Moto Driver - Yao</b><span style="margin-left:auto;background:#16a34a;padding:4px 10px;border-radius:20px;font-size:11px">● En ligne</span></div>
+<div style="padding:16px">
+<div style="background:#FFF7ED;border-radius:12px;padding:12px;display:flex;justify-content:space-between">
+<div><p style="font-size:11px;opacity:.6">Gain aujourd'hui</p><p style="font-weight:900;font-size:20px">12.500F</p></div>
+<div style="text-align:right"><p style="font-size:11px;opacity:.6">Assurance</p><p style="color:#16a34a;font-weight:700;font-size:12px">✓ Couvert jusqu'à 23h59</p></div>
+</div>
+<div style="margin-top:16px;border:2px solid #FF6B00;border-radius:16px;padding:16px;animation:pulse 1s infinite">
+<p style="font-weight:900">🔔 Nouvelle course !</p><p style="font-size:13px;margin-top:6px">Client: Koffi - Yopougon → Plateau<br>Prix: 3000F • 4.2km</p>
+<div style="display:flex;gap:10px;margin-top:12px"><button class="btn" style="width:50%;margin:0;background:#16a34a">Accepter</button><button class="btn" style="width:50%;margin:0;background:#eee;color:#000">Refuser</button></div>
+</div>
+<button class="btn" style="background:#101828" onclick="openPage('assMoto')">🪖 Activer assurance 500F</button>
+</div>
+</div>
+
+<!-- INTERFACE 3: RESTAURANT -->
+<div id="restau" class="page">
+<div class="top" style="background:#ef4444"><b>🍛 Maquis Chez Awa</b><span style="margin-left:auto;font-size:11px">● Ouvert</span></div>
+<div style="padding:16px">
+<div style="background:#FEF2F2;border:2px solid #ef4444;border-radius:16px;padding:16px">
+<p style="font-weight:900">🔔 Nouvelle commande #123</p>
+<p style="font-size:13px;margin-top:8px">2 Attiéké poisson + 1 Bissap<br>Client: Koffi - 2500F<br>Livraison: Moto</p>
+<p style="font-size:11px;margin-top:8px;opacity:.6">Préparation:</p>
+<div style="display:flex;gap:6px;margin-top:6px"><button style="padding:8px;border-radius:20px;border:1px solid #ddd">15min</button><button style="padding:8px;border-radius:20px;background:#ef4444;color:#fff;border:none">30min</button><button style="padding:8px;border-radius:20px;border:1px solid #ddd">45min</button></div>
+<button class="btn" style="background:#ef4444;margin:12px 0 0 0;width:100%">Accepter - Plat en préparation</button>
+</div>
+<div style="margin-top:16px;display:flex;justify-content:space-between;font-size:12px"><span>Gain du jour: <b>18.000F</b></span><span>Commandes: <b>7</b></span></div>
+</div>
+</div>
