@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>CHAPCHAP-CI - Tout Abidjan en un chap - Super App</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,sans-serif}
+body{background:#FFF7F0;max-width:430px;margin:0 auto;min-height:100vh;position:relative}
+header{background:#FF6B00;color:#fff;padding:20px 20px 24px;border-radius:0 0 24px 24px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:16px}
+.card{border-radius:20px;padding:14px;color:#fff;cursor:pointer;position:relative;min-height:115px;transition:transform .1s}
+.card:active{transform:scale(.96)}
+.card h3{font-size:13px;margin-top:6px;font-weight:900}.card p{font-size:10.5px;opacity:.95;margin-top:3px;line-height:13px}
+.tag{position:absolute;top:7px;right:7px;background:#fff;color:#000;font-size:8px;padding:3px 7px;border-radius:10px;font-weight:900}
+.orange{background:#FF6B00}.green{background:#16a34a}.blue{background:#2563eb}.red{background:#ef4444}.purple{background:#7c3aed}.dark{background:#1e293b}.motoB{background:linear-gradient(135deg,#FF6B00,#ff9a3c)}.voitureB{background:linear-gradient(135deg,#0f172a,#334155)}
+.page{display:none;background:#fff;min-height:100vh;padding-bottom:90px;animation:fade .2s}
+.page.active{display:block}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.topbar{color:#fff;padding:14px 16px;display:flex;gap:12px;align-items:center;position:sticky;top:0;z-index:10}
+.btn{width:calc(100% - 32px);margin:16px;background:#FF6B00;color:#fff;border:none;padding:16px;border-radius:16px;font-weight:900;font-size:15px;cursor:pointer;display:block;text-align:center}
+.box{border:1px solid #f1f5f9;border-radius:16px;padding:14px;margin:10px 16px;background:#fff}
+.duree{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:10px 0}
+.duree button{border:2px solid #e5e7eb;border-radius:12px;padding:10px;font-weight:800;background:#fff;cursor:pointer;font-size:13px}
+.duree button.active{border-color:#FF6B00;background:#fff7ed;color:#FF6B00}
+.pay3{background:#000;color:#fff;border-radius:16px;padding:14px;margin:12px 16px}
+.story{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 16px}
+.story div{border:1px solid #eee;border-radius:12px;padding:10px;font-size:11px}
+.story b{font-size:12px}
+nav{position:fixed;bottom:0;max-width:430px;width:100%;background:#fff;border-top:1px solid #eee;display:flex;justify-content:space-around;padding:8px 0;z-index:20}
+nav div{font-size:9px;text-align:center;cursor:pointer;opacity:.6}nav div.active{opacity:1;color:#FF6B00;font-weight:900}
+</style>
+</head>
+<body>
+
+<!-- HOME TOUT ENSEMBLE -->
+<div id="home" class="page active">
+<header>
+<div style="display:flex;justify-content:space-between;align-items:center"><h1 style="font-weight:900;font-size:26px">CHAP CHAP</h1><span style="background:#fff;color:#FF6B00;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:900">ABIDJAN • SUPER-APP</span></div>
+<p style="margin-top:8px;font-size:13px">Tout Abidjan en un chap 🧳 • Prix plafonné heure de pointe</p>
+<div style="margin-top:12px;background:rgba(255,255,255,.2);padding:8px 12px;border-radius:12px;font-size:11px">📍 Cocody Plateau Adjamé Yopougon • 💳 Wave Orange Money MTN MoMo • 🛡️ Assurances incluses</div>
+</header>
+
+<div class="grid">
+<!-- TAXI -->
+<div class="card orange" onclick="openPage('taxi')"><span class="tag">Populaire</span>🏍️<h3>Taxi Moto</h3><p>Dès 3000F<br>Plafonné +20% max 18h</p></div>
+<div class="card dark" onclick="openPage('taxis')">🚕<h3>Taxis & VTC</h3><p>Voiture 5000F<br>Moto 3000F • 3min</p></div>
+<!-- ASSURANCES TOUTES -->
+<div class="card voitureB" onclick="openPage('assVoiture')"><span class="tag">Nouveau</span>🚗<h3>Assurance Voiture</h3><p>24h/48h/1sem<br>Paiement 3x Wave</p></div>
+<div class="card motoB" onclick="openPage('assMoto')"><span class="tag">500F/j</span>🪖<h3>Assurance Moto Kpé</h3><p>Rider protégé<br>Activée 1min</p></div>
+<div class="card orange" onclick="openPage('assurance')"><span class="tag">Porte d'affaires</span>🛡️<h3>Assurance Voyage</h3><p>Heure + 3x<br>100k couverture</p></div>
+<div class="card purple" onclick="openPage('bagage')">🧳<h3>Bagage 50/50</h3><p>5000F<br>+ Assurance dedans ✓</p></div>
+<!-- AUTRES -->
+<div class="card green" onclick="openPage('pharma')">💊<h3>Pharmacie 24/7</h3><p>2h du mat<br>Livré Cocody</p></div>
+<div class="card blue" onclick="openPage('artisan')">🔧<h3>Artisan SOS</h3><p>Plombier 20min<br>5000F fixe</p></div>
+<div class="card red" onclick="openPage('food')"><span class="tag">Nouveau</span>🍛<h3>Food Attieke</h3><p>Garba 3000F<br>25min Adjamé</p></div>
+<div class="card dark" onclick="openPage('camion')">🚚<h3>Camion Déménagement</h3><p>15.000F<br>Équipe pro 7j/7</p></div>
+</div>
+
+<div style="margin:8px 16px;background:#000;color:#fff;padding:12px;border-radius:12px;font-size:11px">✅ Prix plafonné respecté • 🚚 Suivi GPS temps réel • 🛡️ Assurance incluse • 💳 Paiement 50/50</div>
+</div>
+
+<!-- BAGAGE 50/50 AVEC ASSURANCE DEDANS -->
+<div id="bagage" class="page">
+<div class="topbar" style="background:#7c3aed"><span onclick="openPage('home')" style="cursor:pointer">← Accueil</span><b style="margin-left:8px">Bagage 50/50 - Assurance dedans</b></div>
+<div class="box"><h3>Transport bagage partagé</h3><p style="font-size:11px;opacity:.6">Abidjan • 20kg max • Suivi GPS temps réel • Populaire</p><div style="display:flex;justify-content:space-between;margin-top:14px"><span>Prix base 50/50</span><b>5000F</b></div><div style="display:flex;justify-content:space-between;align-items:center;background:#f5f3ff;border:1px solid #ddd6fe;border-radius:12px;padding:12px;margin-top:12px"><div><b style="font-size:13px">✓ Assurance bagage intégrée (dedans bagage)</b><br><span style="font-size:11px">Comme tu as dit vocalement: se retrouve dans bagage<br>Perte/casse/vol jusqu'à 50.000F</span></div><input type="checkbox" id="assBag" checked onchange="calcBag()" style="width:20px;height:20px;accent-color:#7c3aed"></div><div id="assLine" style="display:flex;justify-content:space-between;margin-top:10px;font-size:13px"><span>Assurance bagage</span><b>+500F</b></div><div style="display:flex;justify-content:space-between;border-top:1px solid #eee;padding-top:12px;margin-top:12px;font-weight:900;font-size:18px"><span>Total</span><span style="color:#7c3aed" id="totalBag">5500F</span></div><p style="font-size:10px;margin-top:6px;opacity:.5">Paiement 50/50: 50% maintenant via Wave/Orange/MTN, 50% à la livraison</p></div>
+<button class="btn" style="background:#7c3aed">Réserver <span id="btnBag">5500F</span> • Chauffeur 10min</button>
+<div class="story"><div><b>Scène 1</b><br>Client réserve bagage à Cocody</div><div><b>Scène 2</b><br>Moto arrive + scan QR bagage</div><div><b>Scène 3</b><br>Trajet GPS suivi</div><div><b>Scène 4</b><br>Livraison + assurance si casse</div></div>
+</div>
+
+<!-- ASSURANCE VOYAGE + PORTE D'AFFAIRES + HEURE + 3x -->
+<div id="assurance" class="page">
+<div class="topbar"><span onclick="openPage('home')">←</span><b style="margin-left:8px">Assurance Voyage & Porte d'affaires</b></div>
+<div style="padding:12px 16px"><p style="font-weight:800;font-size:13px">À quelle heure l'assurance prend? (comme tu as dit dans vocal)</p><div class="duree"><button id="d24" onclick="setDuree('24h',1500)">24h<br>1500F</button><button id="d48" class="active" onclick="setDuree('48h',3000)">48h<br>3000F</button><button id="d7" onclick="setDuree('1 semaine',7000)">1 sem<br>7000F</button></div><div class="box" style="margin:12px 0"><b>Couverture porte d'affaires</b><ul style="font-size:12px;margin-top:6px;line-height:20px"><li>✓ Accident & frais médicaux</li><li>✓ Vol / perte bagage</li><li>✓ Retard / annulation</li><li>✓ Porte d'affaires jusqu'à 100.000F</li></ul></div><div class="pay3"><p style="font-size:11px;opacity:.6">Paiement en 3 fois (comme tu as dit vocalement)</p><p id="assPrice" style="font-size:18px;font-weight:900">3000F = 1000F x3 sans frais</p><p style="font-size:10px;opacity:.6">1er paiement aujourd'hui via Wave Orange MTN MoMo</p></div><button class="btn" id="btnAss">Payer 1000F aujourd'hui • Activer maintenant</button></div>
+</div>
+
+<!-- ASSURANCE VOITURE -->
+<div id="assVoiture" class="page">
+<div class="topbar" style="background:#0f172a"><span onclick="openPage('home')">←</span><b style="margin-left:8px">Assurance Voiture</b></div>
+<div style="padding:12px 16px"><div class="box" style="background:#f8fafc"><b>Storyboard Voiture</b><p style="font-size:11px;opacity:.7">Scène 1: Voiture garée Cocody • Scène 2: App mobile 24h/48h • Scène 3: Assurance bagage 1h20 • Scène 4: Paiement 3x</p></div><p style="font-weight:800;margin:12px 16px;font-size:13px">Durée:</p><div class="duree" style="margin:0 16px"><button onclick="setPrixV(1500,this)" class="active">24h<br>1500F</button><button onclick="setPrixV(3000,this)">48h<br>3000F</button><button onclick="setPrixV(7000,this)">1 sem<br>7000F</button></div><div class="box"><b>Couverture Voiture</b><ul style="font-size:12px;line-height:20px"><li>✓ Accident + remorquage Abidjan</li><li>✓ Vol & incendie</li><li>✓ Bris de glace</li><li>✓ RC</li></ul></div><div class="pay3"><p id="prixVoiture">1500F = 500F x3</p></div><button class="btn" style="background:#0f172a">Souscrire Voiture - <span id="btnVoiture">500F</span> aujourd'hui</button></div>
+</div>
+
+<!-- ASSURANCE MOTO KPE -->
+<div id="assMoto" class="page">
+<div class="topbar" style="background:#FF6B00"><span onclick="openPage('home')">←</span><b style="margin-left:8px">Assurance Moto Kpé 500F/jour</b></div>
+<div style="padding:12px 16px">
+<div style="background:#FFF7ED;border:1px solid #FF6B00;border-radius:12px;padding:10px;display:flex;justify-content:space-between"><div><b style="font-size:13px">PANEL 1 - Le Rider Protégé</b><br><span style="font-size:11px">Casque + bouclier conducteur & passager</span></div><span style="background:#FF6B00;color:#fff;padding:4px 8px;border-radius:10px;font-size:10px;font-weight:900">500F/j</span></div>
+<div class="story" style="margin-top:12px"><div><b>Panel 2</b><br>500F/jour activé en 1min sur app</div><div><b>Panel 3</b><br>Couverture accident + prix plafonné</div><div><b>Panel 4</b><br>Paiement Wave Orange MTN instantané</div><div><b>Bonus</b><br>Protège vous et passagers</div></div>
+<div class="pay3"><p style="font-size:13px;font-weight:800">500F/jour • Wave • Orange Money • MTN MoMo</p><p style="font-size:10px;opacity:.6">Paiement confirmé instantané! 100% mobile</p></div>
+<button class="btn">Activer pour 500F aujourd'hui • CHAPCHAP</button>
+</div>
+</div>
+
+<!-- CAMION DEMENAGEMENT -->
+<div id="camion" class="page"><div class="topbar" style="background:#1e293b"><span onclick="openPage('home')">←</span><b style="margin-left:8px">Camion Déménagement</b></div><div class="box"><p style="font-size:22px;font-weight:900">Camion 15.000F</p><p style="font-size:12px">Scène 1: Camion orange Cocody • Scène 2: Chargement meubles fragile • Scène 3: Famille s'installe • Scène 4: Réservez via WhatsApp 7j/7 • Équipe pro</p></div><div class="story"><div>Camion CHAPCHAP</div><div>Chargement meubles</div><div>Famille à Cocody</div><div>Réservez facilement</div></div><button class="btn" style="background:#1e293b">Réserver Camion 15.000F</button></div>
+
+<!-- TAXIS & TAXI MOTO -->
+<div id="taxis" class="page"><div class="topbar"><span onclick="openPage('home')">←</span><b style="margin-left:8px">Taxis & VTC - Abidjan Super-App</b></div><div class="box"><p style="font-weight:900">1. Réserver en 1 Tap</p><p style="font-size:12px">Où allez-vous? Cocody, Plateau... Taxi & VTC Voiture 5000F / Moto 3000F / Prix plafonné heure de pointe</p></div><div class="box"><p style="font-weight:900">2. Véhicules Dispos - Taxis & Motos</p><p style="font-size:12px">Arrivée en 3min • Chauffeur Kouassi 4.8★ • Plateau Cocody</p></div><div class="box"><p style="font-weight:900">3. Trafic Cocody Plateau</p><p style="font-size:12px">Course en cours • Trajet sécurisé • Suivi GPS temps réel</p></div><div class="pay3"><p style="font-size:13px;font-weight:800">4. Paiement simple & sécurisé • 5000F Voiture / 3000F Moto</p><p style="font-size:11px">Wave Orange MTN</p></div><button class="btn">Confirmer la course</button></div>
+
+<div id="taxi" class="page"><div class="topbar"><span onclick="openPage('home')">←</span><b style="margin-left:8px">Taxi Moto - Prix plafonné</b></div><div class="box"><p style="font-size:28px;font-weight:900;color:#FF6B00">3000F</p><p style="font-size:12px">Heure de pointe abordable: prix plafonné +20% max même 18h sous la pluie à Cocody. Les autres montent à 9000F, nous on plafonne. C'est écrit.</p></div><button class="btn">Commander Moto 3000F • Arrivée 3min</button></div>
+
+<div id="pharma" class="page"><div class="topbar" style="background:#16a34a"><span onclick="openPage('home')">←</span><b style="margin-left:8px">Pharmacie de Garde 24/7</b></div><div class="box"><b>Pharmacie Les Arcades - Cocody</b><br><span style="color:#16a34a;font-size:11px">Ouverte 24h • 1.2km • Livraison 15min même à 2h du mat</span></div><button class="btn" style="background:#16a34a">Commander médicaments 2h du mat</button></div>
+
+<div id="artisan" class="page"><div class="topbar" style="background:#2563eb"><span onclick="openPage('home')">←</span><b style="margin-left:8px">Artisan SOS - 20min</b></div><div class="box" style="display:flex;justify-content:space-between"><div><b>Plombier</b><br><span style="font-size:11px">4.8★ • 20min Cocody</span></div><b>5000F</b></div><div class="box" style="display:flex;justify-content:space-between"><div><b>Électricien</b><br><span style="font-size:11px">4.9★ • 20min</span></div><b>5000F</b></div><div class="box" style="display:flex;justify-content:space-between"><div><b>Menuisier</b><br><span style="font-size:11px">4.7★ • 20min</span></div><b>5000F</b></div><button class="btn" style="background:#2563eb">Appeler artisan maintenant - Carte Lagune Ébrié</button></div>
+
+<div id="food" class="page"><div class="topbar" style="background:#ef4444"><span onclick="openPage('home')">←</span><b style="margin-left:8px">Food Attieke - Le Must</b></div><div class="box"><b>Attieke Poisson 2500F</b><br><span style="font-size:11px">Adjamé • Livraison 25min • Photos réelles • Suivi map Abidjan • 100% ivoirien</span></div><div class="box"><b>Garba 3000F • Alloco 3000F</b></div><button class="btn" style="background:#ef4444">Commander Attieke chaud • 25min</button></div>
+
+<nav>
+<div onclick="openPage('home')" id="navHome" class="active">🏠<br>Accueil</div>
+<div onclick="openPage('taxis')">🚕<br>Taxis</div>
+<div onclick="openPage('bagage')">🧳<br>Bagage</div>
+<div onclick="openPage('assurance')">🛡️<br>Assurance</div>
+<div onclick="openPage('food')">🍛<br>Food</div>
+</nav>
+
+<script>
+function openPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('nav div').forEach(n=>n.classList.remove('active'));
+  const map={home:'navHome', taxis:'', bagage:'', assurance:'', food:''};
+  if(document.getElementById('navHome') && id=='home') document.getElementById('navHome').classList.add('active');
+  window.scrollTo(0,0);
+}
+function calcBag(){
+  const c=document.getElementById('assBag').checked;
+  document.getElementById('assLine').style.display=c?'flex':'none';
+  document.getElementById('totalBag').innerText=c?'5500F':'5000F';
+  document.getElementById('btnBag').innerText=c?'5500F':'5000F';
+}
+function setDuree(d,p){
+  document.querySelectorAll('#assurance .duree button').forEach(b=>b.classList.remove('active'));
+  if(d=='24h') document.getElementById('d24').classList.add('active');
+  if(d=='48h') document.getElementById('d48').classList.add('active');
+  if(d=='1 semaine') document.getElementById('d7').classList.add('active');
+  document.getElementById('assPrice').innerText=p+'F = '+Math.round(p/3)+'F x3 sans frais';
+  document.getElementById('btnAss').innerText='Payer '+Math.round(p/3)+'F aujourd\'hui';
+}
+function setPrixV(p,el){
+  el.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('prixVoiture').innerText=p+'F = '+Math.round(p/3)+'F x3 sans frais';
+  document.getElementById('btnVoiture').innerText=Math.round(p/3)+'F';
+}
+</script>
+</body>
+</html>
