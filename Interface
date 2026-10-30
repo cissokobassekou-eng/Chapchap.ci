@@ -1,0 +1,27 @@
+import cv2
+import numpy as np
+import mediapipe as mp
+
+cap = cv2.VideoCapture(0)
+if not cap.isOpened():
+    raise RuntimeError("Caméra introuvable")
+
+with mp.solutions.selfie_segmentation.SelfieSegmentation(model_selection=1) as segmenter:
+    while True:
+        ok, frame = cap.read()
+        if not ok:
+            break
+
+        rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        mask = segmenter.process(rgb).segmentation_mask
+        mask = cv2.GaussianBlur(mask, (15, 15), 0)[..., None]
+
+        blurred = cv2.GaussianBlur(frame, (55, 55), 0)
+        output = (frame * mask + blurred * (1 - mask)).astype(np.uint8)
+
+        cv2.imshow("Flou d'arrière-plan", output)
+        if cv2.waitKey(1) & 0xFF == ord("q"):
+            break
+
+cap.release()
+cv2.destroyAllWindows()
